@@ -1,0 +1,17 @@
+.inputButton {
+	font-family: 'Comic Sans MS', 'Comic Sans', cursive; 
+	font-size: 30px; 
+	border: 34px inset #6eff99; 
+	background: border-box #6eff99; 
+	width: 500px; 
+	height: 127px; 
+	margin: 15px; 
+	line-height: 1.5; 
+	text-align: center;
+}
+
+.inputText {
+	border: 7px inset #6eff99; 
+	margin: 15px; 
+	line-height: 1.5;
+}

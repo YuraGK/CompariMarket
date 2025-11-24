@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Item parser</title>
+<link
+	href="/index.css"
+	rel="stylesheet"
+>
+</head>
+<body style="background: no-repeat top/100% url('http://ua.seo-engines.com/wp-content/uploads/online-shopping-image.jpg');">
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<div>
+		<form action="/list/save"
+			th:action="@{/list/save}"
+			th:object="${listItem}"
+			method="post">
+			<table>
+				<thead>
+					<tr>
+						<th	scope="col"
+							th:if="${ATBItemName}"
+							th:text="ATB"></th>
+						<th	scope="col"
+							th:if="${SilpoItemName}"
+							th:text="Silpo"></th>
+						<th	scope="col"
+							th:if="${VarusItemName}"
+							th:text="Varus"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input
+							type="text"
+							th:if="${ATBItemName}"
+							th:text="${ATBItemName}"
+							disabled
+							required
+							th:field="*{ATBItemName}"
+							class="inputText"></td>
+						<td><input type="text"
+							th:if="${SilpoItemName}"
+							th:text="${SilpoItemName}"
+							disabled
+							required
+							th:field="*{SilpoItemName}"
+							class="inputText"></td>
+						<td><input type="text"
+							th:if="${VarusItemName}"
+							th:text="${VarusItemName}"
+							disabled
+							required
+							th:field="*{VarusItemName}"
+							class="inputText"></td>
+					</tr>
+					<tr>
+						<td><input type="text"
+							th:if="${ATBItemPrice}"
+							th:text="${ATBItemPrice}"
+							disabled
+							required
+							th:field="*{ATBItemPrice}"
+							class="inputText"></td>
+						<td><input type="text"
+							th:if="${SilpoItemPrice}"
+							th:text="${SilpoItemPrice}"
+							disabled
+							required
+							th:field="*{SilpoItemPrice}"
+							class="inputText"></td>
+						<td><input type="text"
+							th:if="${VarusItemPrice}"
+							th:text="${VarusItemPrice}"
+							disabled
+							required
+							th:field="*{VarusItemPrice}"
+							class="inputText"></td>
+					</tr>
+				</tbody>
+			</table>
+			<input th:if="${ATBItemName}"
+				type="submit"
+				onclick="saveItemToList"
+				value="Додати до списку"> <input
+				th:if="${ATBItemName}"
+				type="submit"
+				onclick="removeItemFromList"
+				value="Видалити зі списку">
+		</form>
+		<form action="/index"
+			th:action="@{/index}"
+			th:object="${item}"
+			method="post">
+			<input type="text"
+				placeholder="Введіть назву товару"
+				required
+				th:field="*{itemName}"
+				class="inputText"> <br /> <input
+				class="inputButton"
+				type="submit"
+				onclick="getItems"
+				value="Знайти">
+		</form>
+	</div>
+	<div>
+		<ul>
+			<li	th:each="item : ${fullList}" th:text="${item.ATBItemName}"></li>
+		</ul>
+	</div>
+</body>
+</html>
